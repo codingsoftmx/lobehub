@@ -1,14 +1,14 @@
 {
-  "name": "lobehub-desktop-dev",
+  "name": "agentes-desktop",
   "version": "0.0.0",
   "private": true,
-  "description": "LobeHub Desktop Application",
-  "homepage": "https://lobehub.com",
+  "description": "Agentes Desktop Application",
+  "homepage": "https://codingsoft.org",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lobehub/lobe-chat.git"
+    "url": "https://github.com/codingsoftmx/lobehub"
   },
-  "author": "LobeHub",
+  "author": "CodingSoft",
   "main": "./dist/main/index.js",
   "scripts": {
     "build:cli": "cd ../cli && cross-env MINIFY=1 bun run build",

@@ -21,7 +21,7 @@ import { ServiceModule } from './index';
 
 const logger = createLogger('services:GatewayConnectionSrv');
 
-const DEFAULT_GATEWAY_URL = 'https://device-gateway.lobehub.com';
+const DEFAULT_GATEWAY_URL = '';
 
 /**
  * Result envelope a tool-call handler must return. Mirrors
@@ -156,7 +156,7 @@ export default class GatewayConnectionService extends ServiceModule {
   }
 
   /**
-   * Derive the stable, user-scoped device id. Survives LobeHub reinstalls
+   * Derive the stable, user-scoped device id. Survives Agentes reinstalls
    * because it hashes the OS machine id; falls back to the stored random UUID
    * when the machine id is unavailable. Caches the result for this session.
    */

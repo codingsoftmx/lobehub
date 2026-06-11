@@ -20,7 +20,7 @@ e2e
 tests
 changelog
 docs
-locales
+# locales are needed by the build
 __mocks__
 *.tsbuildinfo
 bun.lock

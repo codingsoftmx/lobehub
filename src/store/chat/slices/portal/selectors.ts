@@ -3,7 +3,8 @@ import { type ChatStoreState } from '@/store/chat';
 import { type PortalArtifact } from '@/types/artifact';
 
 import { dbMessageSelectors } from '../message/selectors';
-import { type PortalFile, type PortalViewData } from './initialState';
+import { getLocalFileTabId } from './helpers';
+import { type OpenLocalFileEntry, type PortalFile, type PortalViewData } from './initialState';
 import { PortalViewType } from './initialState';
 
 // ============== Core Stack Selectors ==============
@@ -132,17 +133,28 @@ const previewFileId = (s: ChatStoreState) => currentFile(s)?.fileId;
 const chunkText = (s: ChatStoreState) => currentFile(s)?.chunkText;
 
 // Local File selectors
-const activeLocalFilePath = (s: ChatStoreState): string | undefined => s.activeLocalFilePath;
+const activeLocalFileId = (s: ChatStoreState): string | undefined => {
+  if (s.activeLocalFileId) return s.activeLocalFileId;
 
-const openLocalFiles = (s: ChatStoreState): Array<{ filePath: string; workingDirectory: string }> =>
-  s.openLocalFiles;
-
-const currentLocalFile = (
-  s: ChatStoreState,
-): { filePath: string; workingDirectory: string } | undefined => {
   const active = s.activeLocalFilePath;
   if (!active) return undefined;
-  return s.openLocalFiles.find((f) => f.filePath === active);
+
+  const file = (s.openLocalFiles ?? []).find((item) => item.filePath === active);
+  return file ? getLocalFileTabId(file) : undefined;
+};
+
+const activeLocalFilePath = (s: ChatStoreState): string | undefined =>
+  currentLocalFile(s)?.filePath ?? s.activeLocalFilePath;
+
+const openLocalFiles = (s: ChatStoreState): OpenLocalFileEntry[] => s.openLocalFiles ?? [];
+
+const currentLocalFile = (s: ChatStoreState): OpenLocalFileEntry | undefined => {
+  const active = activeLocalFileId(s);
+  if (!active) return undefined;
+  const files = s.openLocalFiles ?? [];
+  return (
+    files.find((f) => getLocalFileTabId(f) === active) ?? files.find((f) => f.filePath === active)
+  );
 };
 
 const localFilePath = (s: ChatStoreState) => currentLocalFile(s)?.filePath;
@@ -170,16 +182,21 @@ const messageDetailId = (s: ChatStoreState): string | undefined => {
 // Tool UI / Plugin selectors
 const currentToolUI = (
   s: ChatStoreState,
-): { identifier: string; messageId: string } | undefined => {
+): { identifier: string; messageId: string; params?: Record<string, any> } | undefined => {
   const view = getViewData(s, PortalViewType.ToolUI);
   if (view) {
-    return { identifier: view.identifier, messageId: view.messageId };
+    return { identifier: view.identifier, messageId: view.messageId, params: view.params };
   }
   return undefined;
 };
 
 const toolMessageId = (s: ChatStoreState) => currentToolUI(s)?.messageId;
 const toolUIIdentifier = (s: ChatStoreState) => currentToolUI(s)?.identifier;
+const toolUIParams = (s: ChatStoreState) => currentToolUI(s)?.params;
+
+const currentVerifyResult = (s: ChatStoreState) => getViewData(s, PortalViewType.VerifyResult);
+const verifyResultOperationId = (s: ChatStoreState) => currentVerifyResult(s)?.operationId;
+const verifyResultCheckItemId = (s: ChatStoreState) => currentVerifyResult(s)?.checkItemId;
 const isPluginUIOpen = (id: string) => (s: ChatStoreState) =>
   toolMessageId(s) === id && showPortal(s);
 
@@ -221,6 +238,7 @@ export const chatPortalSelectors = {
   chunkText,
 
   // Local file data
+  activeLocalFileId,
   activeLocalFilePath,
   currentLocalFile,
   dirtyLocalFileContents,
@@ -237,7 +255,12 @@ export const chatPortalSelectors = {
   currentToolUI,
   toolMessageId,
   toolUIIdentifier,
+  toolUIParams,
   isPluginUIOpen,
+
+  // Verify result detail data
+  verifyResultOperationId,
+  verifyResultCheckItemId,
 };
 
 export * from './selectors/thread';

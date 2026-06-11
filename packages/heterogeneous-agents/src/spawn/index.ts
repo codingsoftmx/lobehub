@@ -16,6 +16,16 @@ export { AgentStreamPipeline, type AgentStreamPipelineOptions } from './agentStr
 export { type CliSpawnPlan, resolveCliSpawnPlan } from './cliSpawn';
 export { CodexFileChangeTracker } from './codexFileChangeTracker';
 export {
+  type CodexInitialModelResolution,
+  type CodexInitialModelSource,
+  type CodexSessionModelInfo,
+  getCodexHome,
+  parseCodexModelFromArgs,
+  parseCodexProfileFromArgs,
+  readCodexSessionModel,
+  resolveCodexInitialModel,
+} from './codexModel';
+export {
   type AgentContentBlock,
   type AgentImageBlock,
   type AgentImageSource,
@@ -32,6 +42,10 @@ export {
 export { JsonlStreamProcessor } from './jsonlProcessor';
 export {
   CLAUDE_CODE_BASE_ARGS,
+  CODEX_BYPASS_APPROVALS_AND_SANDBOX_ARG,
+  CODEX_DEFAULT_EXECUTION_ARGS,
+  CODEX_EXECUTION_MODE_FLAGS,
+  CODEX_REQUIRED_ARGS,
   spawnAgent,
   type SpawnAgentHandle,
   type SpawnAgentOptions,

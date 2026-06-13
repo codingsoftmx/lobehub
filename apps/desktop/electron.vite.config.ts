@@ -200,7 +200,7 @@ const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development
 Object.assign(process.env, loadEnv(mode, ROOT_DIR, ''));
 const updateChannel = process.env.UPDATE_CHANNEL;
 const desktopPackageJson = JSON.parse(
-  readFileSync(path.resolve(__dirname, 'package.json'), 'utf8'),
+  readFileSync(path.resolve(ROOT_DIR, 'package.json'), 'utf8'),
 ) as { version: string };
 const electronRuntimeExternals = ['electron'];
 const mainProcessRuntimeExternals = [

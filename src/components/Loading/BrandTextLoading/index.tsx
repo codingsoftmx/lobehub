@@ -1,4 +1,4 @@
-import { BrandLoading, LobeHubText } from '@lobehub/ui/brand';
+import { BRANDING_LOGO_URL } from '@lobechat/business-const';
 
 import { isCustomBranding } from '@/const/version';
 
@@ -13,7 +13,13 @@ const BrandTextLoading = ({ debugId }: BrandTextLoadingProps) => {
   if (isCustomBranding)
     return (
       <div className={styles.container}>
-        <CircleLoading />
+        <div aria-label="Loading" className={styles.brandImage} role="status">
+          <img
+            alt="Agentes"
+            className={styles.logo}
+            src={BRANDING_LOGO_URL}
+          />
+        </div>
       </div>
     );
 
@@ -22,7 +28,7 @@ const BrandTextLoading = ({ debugId }: BrandTextLoadingProps) => {
   return (
     <div className={styles.container}>
       <div aria-label="Loading" className={styles.brand} role="status">
-        <BrandLoading size={40} text={LobeHubText} />
+        <CircleLoading />
       </div>
       {showDebug && (
         <div className={styles.debug}>

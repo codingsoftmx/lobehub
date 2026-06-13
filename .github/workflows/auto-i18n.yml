@@ -18,8 +18,8 @@ jobs:
     steps:
       - name: Configure Git
         run: |
-          git config --global user.name "lobehubbot"
-          git config --global user.email "i@lobehub.com"
+          git config --global user.name "codingsoft-bot"
+          git config --global user.email "bot@codingsoft.org"
 
       - uses: actions/checkout@v6
         with:

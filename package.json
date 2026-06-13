@@ -1,29 +1,31 @@
 {
-  "name": "@lobehub/lobehub",
+  "name": "@codingsoft/agentes",
   "version": "2.2.3",
-  "description": "LobeHub - an open-source,comprehensive AI Agent framework that supports speech synthesis, multimodal, and extensible Function Call plugin system. Supports one-click free deployment of your private ChatGPT/LLM web application.",
+  "description": "Agentes — Platforma de Agentes AI para equipos. Despliega, gestiona y escala tus agentes de IA en un solo lugar.",
   "keywords": [
     "framework",
     "chatbot",
-    "chatgpt",
+    "agentes",
+    "ai-agents",
     "nextjs",
     "vercel-ai",
     "openai",
     "azure-openai",
     "visual-model",
     "tts",
-    "stt"
+    "stt",
+    "codingsoft"
   ],
-  "homepage": "https://github.com/lobehub/lobehub",
+  "homepage": "https://agentes.codingsoft.org",
   "bugs": {
-    "url": "https://github.com/lobehub/lobehub/issues/new/choose"
+    "url": "https://github.com/codingsoftmx/agentes/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/lobehub/lobehub.git"
+    "url": "https://github.com/codingsoftmx/agentes.git"
   },
   "license": "MIT",
-  "author": "LobeHub <i@lobehub.com>",
+  "author": "CodingSoft <dev@codingsoft.org>",
   "sideEffects": [
     "./src/initialize.ts"
   ],

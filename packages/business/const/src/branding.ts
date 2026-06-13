@@ -5,7 +5,7 @@
 export const LOBE_CHAT_CLOUD = 'Agentes Cloud';
 
 export const BRANDING_NAME = 'Agentes';
-export const BRANDING_LOGO_URL = '';
+export const BRANDING_LOGO_URL = '/logo/agentes-icon.png';
 
 export const ORG_NAME = 'CodingSoft';
 

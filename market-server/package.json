@@ -1,0 +1,15 @@
+{
+  "name": "market-server-bridge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Puente entre Agentes y OpenClaw — Market Server auto-hospedado",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  }
+}

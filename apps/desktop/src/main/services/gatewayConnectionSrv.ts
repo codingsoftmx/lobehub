@@ -331,6 +331,7 @@ export default class GatewayConnectionService extends ServiceModule {
       gatewayUrl,
       logger,
       token,
+      tokenType: 'jwt',
       userId: userId || undefined,
     });
 

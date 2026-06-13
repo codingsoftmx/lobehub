@@ -1,8 +1,8 @@
-name: lobehub
+name: agentes
 services:
   lobe:
-    image: ghcr.io/codingsoft/lobehub:latest
-    container_name: lobehub
+    image: ghcr.io/codingsoftmx/lobehub:v2.2.3
+    container_name: agentes
     ports:
       - '${LOBE_PORT}:3210'
     depends_on:
@@ -20,7 +20,7 @@ services:
       - 'DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@postgresql:5432/${LOBE_DB_NAME}'
       - 'INTERNAL_APP_URL=http://localhost:3210'
       - 'S3_ENDPOINT=${S3_ENDPOINT}'
-      - 'S3_BUCKET=${RUSTFS_LOBE_BUCKET}'
+      - 'S3_BUCKET=${RUSTFS_AGENTES_BUCKET}'
       - 'S3_ENABLE_PATH_STYLE=1'
       - 'S3_ACCESS_KEY=${RUSTFS_ACCESS_KEY}'
       - 'S3_ACCESS_KEY_ID=${RUSTFS_ACCESS_KEY}'
@@ -29,17 +29,17 @@ services:
       - 'S3_SET_ACL=0'
       - 'SEARXNG_URL=http://searxng:8080'
       - 'REDIS_URL=redis://redis:6379'
-      - 'REDIS_PREFIX=lobechat'
+      - 'REDIS_PREFIX=agentes'
       - 'REDIS_TLS=0'
     env_file:
       - .env
     restart: always
     networks:
-      - lobe-network
+      - agentes-network
 
   postgresql:
     image: paradedb/paradedb:latest-pg17
-    container_name: lobe-postgres
+    container_name: agentes-postgres
     # Optional: Remove or change these ports if:
     # - You don't need external database access
     # - The ports conflict with other services on your host
@@ -57,11 +57,11 @@ services:
       retries: 5
     restart: always
     networks:
-      - lobe-network
+      - agentes-network
 
   redis:
     image: redis:7-alpine
-    container_name: lobe-redis
+    container_name: agentes-redis
     # Optional: Remove or change these ports if:
     # - You don't need external access
     # - The ports conflict with other services on your host
@@ -77,11 +77,11 @@ services:
       retries: 5
     restart: always
     networks:
-      - lobe-network
+      - agentes-network
 
   rustfs:
     image: rustfs/rustfs:latest
-    container_name: lobe-rustfs
+    container_name: agentes-rustfs
     ports:
       - '${RUSTFS_PORT}:9000'
       - '${RUSTFS_ADMIN_PORT}:9001'
@@ -104,37 +104,37 @@ services:
     command:
       ['--access-key', '${RUSTFS_ACCESS_KEY}', '--secret-key', '${RUSTFS_SECRET_KEY}', '/data']
     networks:
-      - lobe-network
+      - agentes-network
 
   rustfs-init:
     image: minio/mc:latest
-    container_name: lobe-rustfs-init
+    container_name: agentes-rustfs-init
     depends_on:
       rustfs:
         condition: service_healthy
     volumes:
       - ./bucket.config.json:/bucket.config.json:ro
     entrypoint: /bin/sh
-    command: -c ' set -eux; echo "S3_ACCESS_KEY=${RUSTFS_ACCESS_KEY}, S3_SECRET_KEY=${RUSTFS_SECRET_KEY}"; mc --version; mc alias set rustfs "http://rustfs:9000" "${RUSTFS_ACCESS_KEY}" "${RUSTFS_SECRET_KEY}"; mc ls rustfs || true; mc mb "rustfs/lobe" --ignore-existing; mc admin info rustfs || true; mc anonymous set-json "/bucket.config.json" "rustfs/lobe"; '
+    command: -c ' set -eux; echo "S3_ACCESS_KEY=${RUSTFS_ACCESS_KEY}, S3_SECRET_KEY=${RUSTFS_SECRET_KEY}"; mc --version; mc alias set rustfs "http://rustfs:9000" "${RUSTFS_ACCESS_KEY}" "${RUSTFS_SECRET_KEY}"; mc ls rustfs || true; mc mb "rustfs/agentes" --ignore-existing; mc admin info rustfs || true; mc anonymous set-json "/bucket.config.json" "rustfs/agentes"; '
     restart: 'no'
     networks:
-      - lobe-network
+      - agentes-network
 
   searxng:
     image: searxng/searxng
-    container_name: lobe-searxng
+    container_name: agentes-searxng
     volumes:
       - './searxng-settings.yml:/etc/searxng/settings.yml'
     environment:
       - 'SEARXNG_SETTINGS_FILE=/etc/searxng/settings.yml'
     restart: always
     networks:
-      - lobe-network
+      - agentes-network
     env_file:
       - .env
 
 networks:
-  lobe-network:
+  agentes-network:
     driver: bridge
 
 volumes:

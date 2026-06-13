@@ -1,10 +1,10 @@
 ---
 name: store-data-structures
-description: 'LobeHub Zustand store data-shape patterns. Use when designing store state, list/detail splits, normalized maps, reducers, messagesMap, topicsMap, or choosing shared type sources.'
+description: 'Agentes Zustand store data-shape patterns. Use when designing store state, list/detail splits, normalized maps, reducers, messagesMap, topicsMap, or choosing shared type sources.'
 user-invocable: false
 ---
 
-# LobeHub Store Data Structures
+# Agentes Store Data Structures
 
 How to structure data in Zustand stores for fast list rendering, multi-detail caching, and ergonomic optimistic updates.
 

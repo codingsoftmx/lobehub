@@ -7,15 +7,15 @@ Authoritative references:
 
 ## Architecture
 
-LobeHub does not speak to Apple's iMessage service directly. Operators host
-BlueBubbles Server on a Mac signed into Messages. The LobeHub Desktop app runs
+Agentes does not speak to Apple's iMessage service directly. Operators host
+BlueBubbles Server on a Mac signed into Messages. The Agentes Desktop app runs
 a loopback webhook bridge on that Mac and keeps the BlueBubbles REST URL and
 password local.
 
 ```text
-iMessage -> macOS Messages -> BlueBubbles -> 127.0.0.1 LobeHub Desktop bridge
-Desktop bridge -> /api/agent/webhooks/imessage/:applicationId -> LobeHub bot router
-LobeHub bot reply -> Device Gateway tool call -> Desktop bridge -> BlueBubbles REST API
+iMessage -> macOS Messages -> BlueBubbles -> 127.0.0.1 Agentes Desktop bridge
+Desktop bridge -> /api/agent/webhooks/imessage/:applicationId -> Agentes bot router
+Agentes bot reply -> Device Gateway tool call -> Desktop bridge -> BlueBubbles REST API
 ```
 
 ## Credentials
@@ -24,9 +24,9 @@ Cloud bot provider:
 
 | Field             | Source                             | Notes                                                                                                    |
 | ----------------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `applicationId`   | Operator-chosen LobeHub identifier | Shared by the cloud provider and Desktop bridge.                                                         |
-| `desktopDeviceId` | LobeHub Desktop Gateway settings   | Identifies the Desktop device that can reach BlueBubbles locally.                                        |
-| `webhookSecret`   | Operator-generated                 | Desktop forwards BlueBubbles events to LobeHub with `?secret=<value>` because BlueBubbles does not sign. |
+| `applicationId`   | Operator-chosen Agentes identifier | Shared by the cloud provider and Desktop bridge.                                                         |
+| `desktopDeviceId` | Agentes Desktop Gateway settings   | Identifies the Desktop device that can reach BlueBubbles locally.                                        |
+| `webhookSecret`   | Operator-generated                 | Desktop forwards BlueBubbles events to Agentes with `?secret=<value>` because BlueBubbles does not sign. |
 
 Desktop-only bridge config:
 
@@ -80,11 +80,12 @@ BlueBubbles Private API. Failures are logged and ignored.
 
 ## Limitations
 
-- LobeHub Desktop must stay online for inbound forwarding and outbound replies.
+- Agentes Desktop must stay online for inbound forwarding and outbound replies.
 - iMessage has no general bot mention primitive. Group wake behavior relies on
   watch keywords and group policy, not native `@bot` mentions.
 - Message editing, deleting, reactions, pins, polls, and threads are not
   exposed as LobeHub bot capabilities for iMessage.
 - BlueBubbles advanced send features may require the Private API / SIP changes
-  on the Mac. LobeHub's basic text and attachment path uses AppleScript by
+  on the Mac. Agentes' basic text and attachment path uses AppleScript by
   default.
+

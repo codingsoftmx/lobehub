@@ -1,10 +1,10 @@
 ---
 name: project-overview
-description: 'LobeHub open-source monorepo architecture map. Use when locating code layers, understanding apps/packages/src layout, business stubs, project structure, or onboarding to the repository.'
+description: 'Agentes open-source monorepo architecture map. Use when locating code layers, understanding apps/packages/src layout, business stubs, project structure, or onboarding to the repository.'
 user-invocable: false
 ---
 
-# LobeHub Project Overview
+# Agentes Project Overview
 
 > The directory listings below are a **curated map of key locations**, not an
 > exhaustive tree. `packages/`, `src/store/`, route groups etc. grow over time —
@@ -12,7 +12,7 @@ user-invocable: false
 
 ## Project Description
 
-Open-source, modern-design AI Agent Workspace: **LobeHub** (previously LobeChat).
+Open-source, modern-design AI Agent Workspace: **Agentes** (previously LobeChat).
 This repo is the **open-source root** (`github.com/lobehub/lobehub`, package `@lobehub/lobehub`).
 
 **Supported platforms:**
@@ -54,7 +54,7 @@ git submodules.
 ```
 (repo root)
 ├── apps/
-│   ├── cli/                  # LobeHub CLI
+│   ├── cli/                  # Agentes CLI
 │   ├── desktop/              # Electron desktop app
 │   ├── device-gateway/       # Device gateway service
 │   └── server/               # Next.js-backed server: featureFlags, globalConfig, modules, routers, services, utils, workflows (`@/server/*` alias)

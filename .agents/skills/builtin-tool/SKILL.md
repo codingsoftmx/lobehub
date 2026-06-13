@@ -1,6 +1,6 @@
 ---
 name: builtin-tool
-description: 'Build LobeHub builtin tool packages. Use when adding agent-callable tools, manifests, executors, runtimes, inspectors, renders, placeholders, streaming, interventions, portals, or tool registries.'
+description: 'Build Agentes builtin tool packages. Use when adding agent-callable tools, manifests, executors, runtimes, inspectors, renders, placeholders, streaming, interventions, portals, or tool registries.'
 ---
 
 # Builtin Tool Authoring Guide

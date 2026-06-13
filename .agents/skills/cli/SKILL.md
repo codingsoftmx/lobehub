@@ -1,14 +1,14 @@
 ---
 name: cli
-description: LobeHub CLI (@lobehub/cli) development guide — commands, subcommands, architecture.
+description: Agentes CLI (@lobehub/cli) development guide — commands, subcommands, architecture.
 disable-model-invocation: true
 ---
 
-# LobeHub CLI Development Guide
+# Agentes CLI Development Guide
 
 ## Overview
 
-LobeHub CLI (`@lobehub/cli`) is a command-line tool for managing and interacting with LobeHub services. Built with Commander.js + TypeScript.
+Agentes CLI (`@lobehub/cli`) is a command-line tool for managing and interacting with Agentes services. Built with Commander.js + TypeScript.
 
 - **Package**: `apps/cli/`
 - **Entry**: `apps/cli/src/index.ts`

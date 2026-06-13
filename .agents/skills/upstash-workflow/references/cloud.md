@@ -221,7 +221,7 @@ REDIS_URL=redis://...
 
 **Implement in Lobehub if**:
 
-- Feature is useful for all LobeHub users
+- Feature is useful for all Agentes users
 - No proprietary business logic
 - Can be open-sourced
 

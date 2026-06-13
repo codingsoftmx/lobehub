@@ -5,7 +5,7 @@
 # ==================
 
 # check operating system
-# ref: https://github.com/lobehub/lobe-chat/pull/5247
+# ref: https://github.com/codingsoftmx/lobehub/pull/1
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # macOS
     SED_INPLACE_ARGS=('-i' '')
@@ -25,7 +25,7 @@ fi
 
 # Arg: --url
 # Determine the source URL to download files
-SOURCE_URL="https://raw.githubusercontent.com/lobehub/lobe-chat/main"
+SOURCE_URL="https://raw.githubusercontent.com/codingsoftmx/lobehub/main"
 
 # Arg: --host
 # Determine the server host
@@ -183,20 +183,20 @@ show_message() {
         tips_already_installed)
             case $LANGUAGE in
                 zh_CN)
-                    echo "检测到您已经运行过 LobeHub，本安装程序只能完成初始化配置，并不能重复安装。如果你需要重新安装，请删除 data 和 s3_data 文件夹。"
+                    echo "检测到您已经运行过 Agentes，本安装程序只能完成初始化配置，并不能重复安装。如果你需要重新安装，请删除 data 和 s3_data 文件夹。"
                 ;;
                 *)
-                    echo "It is detected that you have run LobeHub. This installation program can only complete the initialization configuration and cannot be reinstalled. If you need to reinstall, please delete the data and s3_data folders."
+                    echo "It is detected that you have run Agentes. This installation program can only complete the initialization configuration and cannot be reinstalled. If you need to reinstall, please delete the data and s3_data folders."
                 ;;
             esac
         ;;
         tips_run_command)
             case $LANGUAGE in
                 zh_CN)
-                    echo "您已经完成了所有配置。请运行以下命令启动 LobeHub 尝试启动："
+                    echo "您已经完成了所有配置。请运行以下命令启动 Agentes 尝试启动："
                 ;;
                 *)
-                    echo "You have completed all configurations. Please run this command to start LobeHub:"
+                    echo "You have completed all configurations. Please run this command to start Agentes:"
                 ;;
             esac
         ;;
@@ -213,20 +213,20 @@ show_message() {
         tips_if_run_normally)
             case $LANGUAGE in
                 zh_CN)
-                    echo "如果一切运行正常，你可以使用以下指令在 daemon 模式下启动 LobeHub:"
+                    echo "如果一切运行正常，你可以使用以下指令在 daemon 模式下启动 Agentes:"
                 ;;
                 *)
-                    echo "If everything runs normally, you can use the following command to start LobeHub in daemon mode:"
+                    echo "If everything runs normally, you can use the following command to start Agentes in daemon mode:"
                 ;;
             esac
         ;;
         tips_regen_jwks)
             case $LANGUAGE in
                 zh_CN)
-                    echo "在完成部署测试后，请前往 https://lobehub.com/zh/docs/self-hosting/environment-variables/auth#jwks_key 生成新的 JWKS_KEY 并替换 .env 中的值，以确保安全性。"
+                    echo "在完成部署测试后，请前往 https://docs.codingsoft.org/agentes/zh/environment-variables/auth#jwks_key 生成新的 JWKS_KEY 并替换 .env 中的值，以确保安全性。"
                 ;;
                 *)
-                    echo "After completing the deployment test, please go to https://lobehub.com/docs/self-hosting/environment-variables/auth#jwks_key to generate a new JWKS_KEY and replace the value in .env to ensure security."
+                    echo "After completing the deployment test, please go to https://docs.codingsoft.org/agentes/environment-variables/auth#jwks_key to generate a new JWKS_KEY and replace the value in .env to ensure security."
                 ;;
             esac
         ;;
@@ -257,10 +257,10 @@ show_message() {
         tips_show_documentation_url)
             case $LANGUAGE in
                 zh_CN)
-                    echo "https://lobehub.com/zh/docs/self-hosting/environment-variables"
+                    echo "https://docs.codingsoft.org/agentes/zh/environment-variables"
                 ;;
                 *)
-                    echo "https://lobehub.com/docs/self-hosting/environment-variables"
+                    echo "https://docs.codingsoft.org/agentes/environment-variables"
                 ;;
             esac
         ;;
@@ -350,19 +350,19 @@ show_message() {
             case $LANGUAGE in
                 zh_CN)
                     echo "请选择部署模式："
-                    echo "(0) 域名模式（访问时无需指明端口），需要使用反向代理服务 LobeHub, RustFS，并分别分配一个域名；"
+                    echo "(0) 域名模式（访问时无需指明端口），需要使用反向代理服务 Agentes, RustFS，并分别分配一个域名；"
                     echo "(1) 端口模式（访问时需要指明端口，如使用IP访问，或域名+端口访问），需要放开指定端口；"
                     echo "(2) 本地模式（仅供本地测试使用）"
                     echo "如果你对这些内容疑惑，可以先选择使用本地模式进行部署，稍后根据文档指引再进行修改。"
-                    echo "https://lobehub.com/docs/self-hosting/server-database/docker-compose"
+                    echo "https://docs.codingsoft.org/agentes/server-database/docker-compose"
                 ;;
                 *)
                     echo "Please select the deployment mode:"
-                    echo "(0) Domain mode (no need to specify the port when accessing), you need to use the reverse proxy service LobeHub, RustFS, and assign a domain name respectively;"
+                    echo "(0) Domain mode (no need to specify the port when accessing), you need to use the reverse proxy service Agentes, RustFS, and assign a domain name respectively;"
                     echo "(1) Port mode (need to specify the port when accessing, such as using IP access, or domain name + port access), you need to open the specified port;"
                     echo "(2) Local mode (for local testing only)"
                     echo "If you are confused about these contents, you can choose to deploy in local mode first, and then modify according to the document guide later."
-                    echo "https://lobehub.com/docs/self-hosting/server-database/docker-compose"
+                    echo "https://docs.codingsoft.org/agentes/server-database/docker-compose"
                 ;;
             esac
         ;;
@@ -582,7 +582,7 @@ section_configurate_host() {
     case $DEPLOY_MODE in
         0)
             DEPLOY_MODE="domain"
-            echo "LobeHub" $(show_message "ask_domain" "example.com")
+            echo "Agentes" $(show_message "ask_domain" "example.com")
             ask "(example.com)"
             LOBE_HOST="$ask_result"
             # If user use domain mode, ask for the domain of RustFS
@@ -592,7 +592,7 @@ section_configurate_host() {
         ;;
         1)
             DEPLOY_MODE="ip"
-            ask $(printf "%s%s" "LobeHub" $(show_message "ask_host")) "$HOST" $(printf "%s" $(show_message "tips_auto_detected"))
+            ask $(printf "%s%s" "Agentes" $(show_message "ask_host")) "$HOST" $(printf "%s" $(show_message "tips_auto_detected"))
             LOBE_HOST="$ask_result"
             # If user use ip mode, use ask_result as the host
             HOST="$ask_result"
@@ -745,7 +745,7 @@ section_display_configurated_report() {
     # Display configuration reports
     echo $(show_message "security_secrect_regenerate_report")
 
-    echo -e "LobeHub: \n  - URL: $PROTOCOL://$LOBE_HOST"
+    echo -e "Agentes: \n  - URL: $PROTOCOL://$LOBE_HOST"
     echo -e "RustFS: \n  - URL: $PROTOCOL://$RUSTFS_HOST \n  - Username: admin\n  - Password: ${RUSTFS_SECRET_KEY}\n"
 
     # if user run in domain mode, diplay reverse proxy configuration

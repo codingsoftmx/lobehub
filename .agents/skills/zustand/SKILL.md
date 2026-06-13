@@ -1,10 +1,10 @@
 ---
 name: zustand
-description: 'LobeHub Zustand store conventions. Use when editing src/store, store slices, public/internal actions, dispatch actions, flattenActions, optimistic updates, selectors, maps, or class action migration.'
+description: 'Agentes Zustand store conventions. Use when editing src/store, store slices, public/internal actions, dispatch actions, flattenActions, optimistic updates, selectors, maps, or class action migration.'
 user-invocable: false
 ---
 
-# LobeHub Zustand State Management
+# Agentes Zustand State Management
 
 ## Action Type Hierarchy
 

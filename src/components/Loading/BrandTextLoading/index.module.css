@@ -31,6 +31,30 @@
   color: var(--brand-text-color);
 }
 
+.brandImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: logoFadeIn 1s ease-in-out;
+}
+
+.logo {
+  width: 240px;
+  height: auto;
+  display: block;
+}
+
+@keyframes logoFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .brand :global(.lobe-brand-loading) {
   display: block;
   color: inherit;

@@ -1,6 +1,6 @@
 ---
 name: typescript
-description: 'LobeHub TypeScript style and type-safety guide. Use when editing TS/TSX/MTS, fixing types, choosing interface vs type, avoiding any/object, import type, async flow, or ts-expect-error.'
+description: 'Agentes TypeScript style and type-safety guide. Use when editing TS/TSX/MTS, fixing types, choosing interface vs type, avoiding any/object, import type, async flow, or ts-expect-error.'
 user-invocable: false
 ---
 
